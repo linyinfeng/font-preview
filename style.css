@@ -1,0 +1,11 @@
+.css-input {
+    font-family: monospace;
+}
+
+.css-input-label-cell {
+    text-align: right;
+}
+
+#css-inputs {
+    margin-bottom: 16px;
+}
