@@ -10,18 +10,29 @@
 
 <body>
     <h1>Font Preview</h1>
-    <table id="css-inputs">
-        <tr>
-            <th>Property</th>
-            <th>Value</th>
-        </tr>
-    </table>
-    <div>
-        <textarea id="test-area" rows="4" cols="40">天地玄黄，宇宙洪荒。日月盈仄，辰宿列张。
-The quick brown fox jumps over the lazy dog.</textarea>
+    <div id="main-container">
+        <table id="css-inputs-table">
+            <tr>
+                <th>CSS Property</th>
+                <th>Value</th>
+            </tr>
+        </table>
+        <table id="attribute-inputs-table">
+            <tr>
+                <th>Attribute</th>
+                <th>Value</th>
+            </tr>
+        </table>
+        <button id="save-button" type="button">
+            Save
+        </button>
+        <textarea id="test-area" rows="4"
+            cols="40">天地玄黄，宇宙洪荒。日月盈仄，辰宿列张。The quick brown fox jumps over the lazy dog.</textarea>
+        <div id="save-area">
+        </div>
     </div>
 
-    <script src="update.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

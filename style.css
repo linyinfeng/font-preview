@@ -1,11 +1,71 @@
-.css-input {
+input {
     font-family: monospace;
 }
 
-.css-input-label-cell {
+.input-label-cell {
     text-align: right;
 }
 
 #css-inputs {
     margin-bottom: 16px;
+}
+
+#save-button {
+    display: block;
+}
+
+.saved-item {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 'button paragraph'
+        'button description';
+    justify-content: start;
+}
+
+.saved-delete-button {
+    grid-area: button;
+    justify-self: center;
+    align-self: center;
+
+    margin-right: 16px;
+}
+
+.saved-paragraph {
+    grid-area: paragraph;
+    justify-self: start;
+    align-self: start;
+
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.saved-descriptions {
+    grid-area: description;
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: stretch;
+    align-self: stretch;
+}
+
+.saved-description-item {
+    font-size: 9px;
+    font-family: monospace;
+
+    color: gray;
+    margin-right: 2ex;
+}
+
+.saved-description-item:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.saved-description-item-key::after {
+    content: ":";
+}
+
+.saved-description-item-value {
+    margin-left: 1ex;
 }
