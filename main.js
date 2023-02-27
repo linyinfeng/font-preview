@@ -3,6 +3,7 @@ const inputTableCss = document.getElementById("css-inputs-table");
 const inputTableAttribute = document.getElementById("attribute-inputs-table");
 const saveButton = document.getElementById("save-button");
 const saveArea = document.getElementById("save-area");
+let savedTexts = [];
 
 const cssProperties = [
     { name: 'font-family', defaultValue: "serif" },
@@ -65,6 +66,7 @@ function createDescriptionItem(key, value) {
 function save() {
     const paragraph = document.createElement("p");
     const text = document.createTextNode(testArea.value);
+    savedTexts.push(text);
     paragraph.appendChild(text);
     for (const p of cssProperties) {
         paragraph.style[p.name] = testArea.style[p.name];
@@ -99,14 +101,13 @@ function save() {
 
     saveArea.appendChild(savedItem);
 
-    deleteButton.addEventListener("click", function () {
+    deleteButton.addEventListener("click", (_event) => {
         saveArea.removeChild(savedItem);
+        savedTexts = savedTexts.filter((item) => item !== text)
     });
 }
 
 (function () {
-    let allInputs = [];
-
     for (const p of cssProperties) {
         const inputId = `css-input-${p.name}`;
         const input = createInput(inputTableCss, inputId, "css", p)
@@ -114,7 +115,6 @@ function save() {
         input.addEventListener('input', (event) => {
             testArea.style[p.name] = event.target.value;
         });
-        allInputs.push(input);
     }
 
     for (const a of attributes) {
@@ -124,12 +124,17 @@ function save() {
         input.addEventListener('input', (event) => {
             testArea.setAttribute(a.name, event.target.value);
         });
-        allInputs.push(input);
     }
+
+    testArea.addEventListener('input', (event) => {
+        savedTexts.forEach((textNode) => {
+            textNode.nodeValue = event.target.value;
+        })
+    });
 
     saveButton.addEventListener("click", save);
 
-    document.addEventListener("keypress", function (event) {
+    document.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
             event.preventDefault();
             saveButton.click();
