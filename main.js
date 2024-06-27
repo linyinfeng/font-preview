@@ -12,6 +12,8 @@ const cssProperties = [
     { name: 'font-weight', defaultValue: "normal" },
     { name: 'font-size', defaultValue: "medium" },
     { name: 'line-height', defaultValue: "normal" },
+    { name: 'text-autospace', defaultValue: "normal" },
+    { name: 'text-spacing-trim', defaultValue: "normal" },
 ];
 
 const attributes = [
